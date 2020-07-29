@@ -19,13 +19,15 @@ function writeToDocument(type) {
         document.getElementById("data").innerHTML = data.results;
     });
 }*/
-
+//added el var to take each output and allow clearing of element on each call
 function writeToDocument(type) {
+  var el = document.getElementById("data");
+  el.innerHTML ="";
   getData(type, function(data) {
       data = data.results;
 
       data.forEach(function(item) {
-        document.getElementById("data").innerHTML += "<p>" + item.name + "</p>";
+        el.innerHTML += "<p>" + item.name + "</p>";
     });
   }
 )}
