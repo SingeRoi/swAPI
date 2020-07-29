@@ -27,6 +27,10 @@ function writeToDocument(type) {
       data = data.results;
 
       data.forEach(function(item) {
+//obtains keys to set up table
+        Object.keys(item).forEach(function(key) {
+            console.log(key);
+        })
         el.innerHTML += "<p>" + item.name + "</p>";
     });
   }
