@@ -12,20 +12,20 @@ function getData(type, cb) {
     }
   };
 }
-//return to 1:23 in video 
+/*/return to 1:23 in video
 function writeToDocument(type) {
     getData(type, function(data) {
       console.dir(data);
         document.getElementById("data").innerHTML = data.results;
     });
-}
+}*/
 
-/*function writeToDocument(type) {
+function writeToDocument(type) {
   getData(type, function(data) {
       data = data.results;
 
       data.forEach(function(item) {
-        document.getElementById("data").innerHTML += item.name;
+        document.getElementById("data").innerHTML += "<p>" + item.name + "</p>";
     });
   }
-}*/
+)}
