@@ -12,26 +12,41 @@ function getData(type, cb) {
     }
   };
 }
-/*/return to 1:23 in video
-function writeToDocument(type) {
-    getData(type, function(data) {
-      console.dir(data);
-        document.getElementById("data").innerHTML = data.results;
-    });
-}*/
+
+// create table array TableHeaders
+function getTableHeaders(obj) {
+  var tableHeaders = [];
+
+  Object.keys(obj).forEach(function(key) {
+//  table tableHeaders.push must  be a string literal denoted by `` acent grave '<td>${key}</td>'
+      tableHeaders.push(`<td>${key}</td>`);
+  });
+
+  return `<tr>${tableHeaders}</tr>`;
+}
+
+
+
 //added el var to take each output and allow clearing of element on each call
 function writeToDocument(type) {
   var el = document.getElementById("data");
   el.innerHTML ="";
+
   getData(type, function(data) {
       data = data.results;
+//add getTableHeaders()
+       //var tableHeaders = getTableHeaders(data[()]);
+       var tableHeaders = getTableHeaders(data[0]);
 
       data.forEach(function(item) {
 //obtains keys to set up table
-        Object.keys(item).forEach(function(key) {
-            console.log(key);
-        })
-        el.innerHTML += "<p>" + item.name + "</p>";
+/*        Object.keys(item).forEach(function(key) {
+            console.log(key);*/
+
+        });
+
+        el.innerHTML = `<table>${tableHeaders}</table>`;
+        //el.innerHTML += "<p>" + item.name + "</p>";
     });
+
   }
-)}
