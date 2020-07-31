@@ -29,6 +29,8 @@ function getTableHeaders(obj) {
 
 //added el var to take each output and allow clearing of element on each call
 function writeToDocument(type) {
+// new var to create table for data
+  var tableRows = [];
   var el = document.getElementById("data");
   el.innerHTML ="";
 
@@ -37,15 +39,17 @@ function writeToDocument(type) {
 //add getTableHeaders()
        //var tableHeaders = getTableHeaders(data[()]);
        var tableHeaders = getTableHeaders(data[0]);
-
+// function to push data element onto table
       data.forEach(function(item) {
-//obtains keys to set up table
-/*        Object.keys(item).forEach(function(key) {
-            console.log(key);*/
-
+        var dataRow =[];
+//item [key] obtains value for each data pair
+        Object.keys(item).forEach(function(key) {
+            dataRow.push(`<td>${item[key]}</td>`);
         });
-
-        el.innerHTML = `<table>${tableHeaders}</table>`;
+      tableRows.push(dataRow);
+    });
+//added tableRows to string litteral
+        el.innerHTML = `<table>${tableHeaders}${tableRows}</table>`;
         //el.innerHTML += "<p>" + item.name + "</p>";
     });
 
